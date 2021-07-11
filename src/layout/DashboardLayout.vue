@@ -13,7 +13,8 @@
             path: '/dashboard'
           }"
         />
-
+        <sidebar-item :link="{name: 'Add Food', icon: 'ni ni-cart text-blue', path: '/addfood'}"/>
+        <sidebar-item :link="{name: 'View Food', icon: 'ni ni-cart text-blue', path: '/viewfood'}"/>
         <sidebar-item :link="{name: 'Icons', icon: 'ni ni-planet text-blue', path: '/icons'}"/>
         <sidebar-item :link="{name: 'Maps', icon: 'ni ni-pin-3 text-orange', path: '/maps'}"/>
         <sidebar-item :link="{name: 'User Profile', icon: 'ni ni-single-02 text-yellow', path: '/profile'}"/>
