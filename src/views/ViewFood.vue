@@ -27,272 +27,111 @@
 
     <div class="container-fluid mt--6">
       <div class="row">
-        <!-- <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="card card-profile shadow"> -->
-        <!-- <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
-                  <a href="#">
-                    <img
-                      src="img/theme/team-4-800x800.jpg"
-                      class="rounded-circle"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div> -->
-        <!-- <div
-              class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
-            >
-              <div class="d-flex justify-content-between">
-                <base-button size="sm" type="info" class="mr-4"
-                  >Connect</base-button
-                >
-                <base-button size="sm" type="default" class="float-right"
-                  >Message</base-button
-                >
-              </div>
-            </div>
-            <div class="card-body pt-0 pt-md-4">
-              <div class="row">
-                <div class="col">
-                  <div
-                    class="
-                      card-profile-stats
-                      d-flex
-                      justify-content-center
-                      mt-md-5
-                    "
-                  >
-                    <div>
-                      <span class="heading">22</span>
-                      <span class="description">Friends</span>
-                    </div>
-                    <div>
-                      <span class="heading">10</span>
-                      <span class="description">Photos</span>
-                    </div>
-                    <div>
-                      <span class="heading">89</span>
-                      <span class="description">Comments</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="text-center">
-                <h3>
-                  Jessica Jones<span class="font-weight-light">, 27</span>
-                </h3>
-                <div class="h5 font-weight-300">
-                  <i class="ni location_pin mr-2"></i>Bucharest, Romania
-                </div>
-                <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager
-                  - Creative Tim Officer
-                </div>
-                <div>
-                  <i class="ni education_hat mr-2"></i>University of Computer
-                  Science
-                </div>
-                <hr class="my-4" />
-                <p>
-                  Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick
-                  Murphy — writes, performs and records all of his own music.
-                </p>
-                <a href="#">Show more</a>
-              </div>
-            </div> -->
-        <!-- </div>
-        </div> -->
+        
 
         <div class="col-xl-12 order-xl-1">
-          <card shadow type="secondary">
+          <card shadow type="secondary" v-for="(f,i) in foodArrayB" :key="i">
             <div slot="header" class="bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">Breakfast</h3>
+                  <h3 class="mb-0">{{f.type}}</h3>
                 </div>
-                <!-- <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
-                </div> -->
               </div>
             </div>
             <template>
               <form @submit.prevent>
                 <div>
                   <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4" v-for="(item,indx) in f.foodArray" :key="indx">
                       <base-input alternative="" label="Food Item 1">
                         <textarea
                           rows="8"
                           class="form-control form-control-alternative"
                           placeholder="A few words about you ..."
+                          disabled
+                          v-model="item.desc"
                         >
-A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
-                        >
+                        
+                  </textarea>
                       </base-input>
                       <div>
-                        <base-button type="default">Vote</base-button>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <base-input alternative="" label="Food Item 2">
-                        <textarea
-                          rows="8"
-                          class="form-control form-control-alternative"
-                          placeholder="A few words about you ..."
-                        >
-A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
-                        >
-                      </base-input>
-                      <div>
-                        <base-button type="default">Vote</base-button>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <base-input alternative="" label="Food Item 3">
-                        <textarea
-                          rows="8"
-                          class="form-control form-control-alternative"
-                          placeholder="A few words about you ..."
-                        >
-A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
-                        >
-                      </base-input>
-                      <div>
-                        <base-button type="default">Vote</base-button>
+                        <base-button type="default" v-if="voteu.votings[0]==false" @click="votethis(f,indx)">Vote</base-button>
+                        <base-button type="default" v-else disabled @click="votethis(f,indx)">Already Voted</base-button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- <h6 class="heading-small text-muted mb-4">User information</h6> -->
-                <!-- <div class="pl-lg-4">
-                  
+                
+              </form>
+            </template>
+          </card>
+          <card shadow type="secondary" v-for="(f,i) in foodArrayL" :key="i">
+            <div slot="header" class="bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">{{f.type}}</h3>
+                </div>
+              </div>
+            </div>
+            <template>
+              <form @submit.prevent>
+                <div>
                   <div class="row">
-                    <div class="col-lg-6">
-                      <base-input
-                        alternative=""
-                        label="Username"
-                        placeholder="Username"
-                        input-classes="form-control-alternative"
-                        v-model="model.username"
-                      />
-                    </div>
-                    <div class="col-lg-6">
-                      <base-input
-                        alternative=""
-                        label="Email address"
-                        placeholder="jesse@example.com"
-                        input-classes="form-control-alternative"
-                        v-model="model.email"
-                      />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <base-input
-                        alternative=""
-                        label="First name"
-                        placeholder="First name"
-                        input-classes="form-control-alternative"
-                        v-model="model.firstName"
-                      />
-                    </div>
-                    <div class="col-lg-6">
-                      <base-input
-                        alternative=""
-                        label="Last name"
-                        placeholder="Last name"
-                        input-classes="form-control-alternative"
-                        v-model="model.lastName"
-                      />
-                    </div>
-                  </div>
-                </div> -->
-                <!-- <hr class="my-4" /> -->
-                <!-- Address -->
-                <!-- <h6 class="heading-small text-muted mb-4">
-                  Contact information
-                </h6>
-                <div class="pl-lg-4">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <base-input
-                        alternative=""
-                        label="Address"
-                        placeholder="Home Address"
-                        input-classes="form-control-alternative"
-                        v-model="model.address"
-                      />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <base-input
-                        alternative=""
-                        label="City"
-                        placeholder="City"
-                        input-classes="form-control-alternative"
-                        v-model="model.city"
-                      />
-                    </div>
-                    <div class="col-lg-4">
-                      <base-input
-                        alternative=""
-                        label="Country"
-                        placeholder="Country"
-                        input-classes="form-control-alternative"
-                        v-model="model.country"
-                      />
-                    </div>
-                    <div class="col-lg-4">
-                      <base-input
-                        alternative=""
-                        label="Postal code"
-                        placeholder="Postal code"
-                        input-classes="form-control-alternative"
-                        v-model="model.zipCode"
-                      />
+                    <div class="col-md-4" v-for="(item,indx) in f.foodArray" :key="indx">
+                      <base-input alternative="" label="Food Item 1">
+                        <textarea
+                          rows="8"
+                          class="form-control form-control-alternative"
+                          placeholder="A few words about you ..."
+                          disabled
+                          v-model="item.desc"
+                        >
+                        
+                  </textarea>
+                      </base-input>
+                      <div>
+                        <base-button type="default" v-if="voteu.votings[1]==false" @click="votethis(f,indx)">Vote</base-button>
+                        <base-button type="default" v-else disabled @click="votethis(f,indx)">Already Voted</base-button>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <hr class="my-4" /> -->
-                <!-- Description -->
-                <!-- <h6 class="heading-small text-muted mb-4">Food Item 1</h6> -->
-                <!-- <div class="pl-lg-4">
-                  <div class="form-group" >
-                    <base-input alternative="" label="Food Item 1">
-                      <textarea
-                        rows="4"
-                        class="form-control form-control-alternative"
-                        placeholder="A few words about you ..."
-                      >
-                        A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
-                      >
-                    </base-input>
-                    <base-input alternative="" label="Food Item 2">
-                      <textarea
-                        rows="4"
-                        class="form-control form-control-alternative"
-                        placeholder="A few words about you ..."
-                      >
-                        A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
-                      >
-                    </base-input>
-                    <base-input alternative="" label="Food Item 3">
-                      <textarea
-                        rows="4"
-                        class="form-control form-control-alternative"
-                        placeholder="A few words about you ..."
-                      >
-                        A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
-                      >
-                    </base-input>
-                    <div>
-                      <base-button type="default">Submit</base-button>
+                
+              </form>
+            </template>
+          </card>
+          <card shadow type="secondary" v-for="(f,i) in foodArrayD" :key="i">
+            <div slot="header" class="bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">{{f.type}}</h3>
+                </div>
+              </div>
+            </div>
+            <template>
+              <form @submit.prevent>
+                <div>
+                  <div class="row">
+                    <div class="col-md-4" v-for="(item,indx) in f.foodArray" :key="indx">
+                      <base-input alternative="" label="Food Item 1">
+                        <textarea
+                          rows="8"
+                          class="form-control form-control-alternative"
+                          placeholder="A few words about you ..."
+                          disabled
+                          v-model="item.desc"
+                        >
+                        
+                  </textarea>
+                      </base-input>
+                      <div>
+                        <base-button type="default" v-if="voteu.votings[2]==false" @click="votethis(f,indx)">Vote</base-button>
+                        <base-button type="default" v-else disabled @click="votethis(f,indx)">Already Voted</base-button>
+                      </div>
                     </div>
                   </div>
-                </div> -->
+                </div>
+                
               </form>
             </template>
           </card>
@@ -302,23 +141,106 @@ A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
   </div>
 </template>
 <script>
+
+import firebase from '@/firebase_init.js';
+let db = firebase.firestore();
 export default {
   name: "user-profile",
   data() {
     return {
-      model: {
-        username: "",
-        email: "",
-        firstName: "",
-        lastName: "",
-        address: "",
-        city: "",
-        country: "",
-        zipCode: "",
-        about: "",
-      },
+      foodArrayB:[],
+      foodArrayL:[],
+      foodArrayD:[],
+      voteu:{}
     };
   },
+  methods:{
+    votethis(e,e2)
+    {
+        //console.log(this.foodArray.foodArray[e2]['desc'])
+        // console.log(this.foodArray)
+        // console.log(e2)
+        // let foodref=db.collection('AllFood').doc(e);
+        // foodref.update({
+        //   totalVote: firebase.firestore.FieldValue.increment(1),
+        
+        // })
+        e.totalVote+=1
+        e.foodArray[e2].voting+=1
+        db.collection('AllFood').doc(e.type).set(e).then(()=>{
+            let uid = localStorage.getItem('uid');
+        if(e.type=='Breakfast')
+        {
+          db.doc('users/'+uid).get().then(u=>{
+          console.log(u.data())
+          let neu=u.data()
+          neu.votings[0]=true
+          console.log(neu)
+           db.doc('users/'+uid).set(neu).then(()=>{
+             this.$router.go()
+           })
+        })
+        }
+        else if(e.type=='Lunch')
+        {
+          db.doc('users/'+uid).get().then(u=>{
+          console.log(u.data())
+          let neu=u.data()
+          neu.votings[1]=true
+          console.log(neu)
+           db.doc('users/'+uid).set(neu).then(()=>{
+             this.$router.go()
+           })
+        })
+        }
+        else if(e.type=='Dinner')
+        {
+          db.doc('users/'+uid).get().then(u=>{
+          console.log(u.data())
+          let neu=u.data()
+          neu.votings[2]=true
+          console.log(neu)
+           db.doc('users/'+uid).set(neu).then(()=>{
+             this.$router.go()
+           })
+        })
+        }
+        })
+        
+        
+        
+        // foodref.set({
+        //   foodArray:this.foodArray
+        // })
+        this.foodArrayB=[]
+    this.foodArrayL=[]
+    this.foodArrayD=[]
+      
+    },
+    
+  },
+  beforeMount()
+  {
+    db.collection('AllFood').onSnapshot(food=>{
+      food.forEach(f=>{
+        console.log(f.data().type)
+        if(f.data().type=='Breakfast')
+        this.foodArrayB.push(f.data())
+        else if(f.data().type=='Lunch')
+        this.foodArrayL.push(f.data())
+        else if(f.data().type=='Dinner')
+        this.foodArrayD.push(f.data())
+        console.log(this.foodArrayD)
+      })
+    });
+    let uid=localStorage.getItem('uid')
+    console.log(uid)
+    db.doc('users/'+uid).get().then(u=>{
+          console.log(u.data())
+          this.voteu=u.data()
+          console.log(this.voteu)
+        })
+  }
 };
 </script>
 <style></style>

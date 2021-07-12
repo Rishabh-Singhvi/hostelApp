@@ -147,7 +147,7 @@ const auth = firebase.auth();
                 })
                 }).then(()=>{
                     this.Logingin=false
-                    this.$router.push('BeatHunger')
+                    //this.$router.push('BeatHunger')
                 })
                 .catch(err=>{
                     this.Logingin=false
@@ -156,7 +156,7 @@ const auth = firebase.auth();
                 })
                 }
                 else{
-                    this.modals.modal2=true
+                    //this.modals.modal2=true
                 }
             }
         }

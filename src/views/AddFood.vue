@@ -27,9 +27,9 @@
                     MENU
                   </base-button>
                 </template>
-                <a class="dropdown-item" href="#">Breakfast</a>
-                <a class="dropdown-item" href="#">Lunch</a>
-                <a class="dropdown-item" href="#">Dinner</a>
+                <span class="dropdown-item" @click="settype('a')">Breakfast</span>
+                <a class="dropdown-item" href="#" @click="settype('b')">Lunch</a>
+                <a class="dropdown-item" href="#" @click="settype('c')">Dinner</a>
               </base-dropdown>
             </div>
           </div>
@@ -231,31 +231,30 @@
                       <textarea
                         rows="4"
                         class="form-control form-control-alternative"
-                        placeholder="A few words about you ..."
+                        placeholder="Menu Description..."
+                        v-model="fooditem1.desc"
                       >
-A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
-                      >
+                  </textarea>
                     </base-input>
                     <base-input alternative="" label="Food Item 2">
                       <textarea
                         rows="4"
                         class="form-control form-control-alternative"
-                        placeholder="A few words about you ..."
-                      >
-A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
-                      >
+                        placeholder="Menu Description..."
+                        v-model="fooditem2.desc"
+                      ></textarea>
                     </base-input>
                     <base-input alternative="" label="Food Item 3">
                       <textarea
                         rows="4"
                         class="form-control form-control-alternative"
-                        placeholder="A few words about you ..."
+                        placeholder="Menu Description..."
+                        v-model="fooditem3.desc"
                       >
-A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
-                      >
+                    </textarea>
                     </base-input>
                     <div>
-                      <base-button type="default">Submit</base-button>
+                      <base-button type="default" @click="submit()">Submit</base-button>
                     </div>
                   </div>
                 </div>
@@ -268,23 +267,48 @@ A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
   </div>
 </template>
 <script>
+
+import firebase from '@/firebase_init.js';
+let db = firebase.firestore();
 export default {
   name: "user-profile",
   data() {
     return {
-      model: {
-        username: "",
-        email: "",
-        firstName: "",
-        lastName: "",
-        address: "",
-        city: "",
-        country: "",
-        zipCode: "",
-        about: "",
+      type:'',
+      fooditem1: {
+        desc:'',
+        voting:0
+      },
+      fooditem2: {
+        desc:'',
+        voting:0
+      },
+      fooditem3: {
+        desc:'',
+        voting:0
       },
     };
   },
+  methods:{
+    settype(e)
+    {
+      if(e=='a')
+        this.type="Breakfast"
+      if(e=='b')
+        this.type="Lunch"
+      if(e=='c')
+        this.type="Dinner"
+    },
+    submit()
+    {
+      let foodObj={};
+      foodObj['totalVote']=0;
+      foodObj['type']=this.type;
+      foodObj['foodArray']=[this.fooditem1,this.fooditem2,this.fooditem3];
+      db.doc('AllFood/'+this.type).set(foodObj)
+
+    }
+  }
 };
 </script>
 <style></style>

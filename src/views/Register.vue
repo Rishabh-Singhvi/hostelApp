@@ -139,8 +139,8 @@ const auth = firebase.auth();
                 let userData= {
                     name : this.name,
                     email: this.email,
-                    type: "manager",
-                    //votings:[false,false,false]
+                    type: "student",
+                    votings:[false,false,false]
                 }
                 db.doc("users/"+user.user.uid).set(userData).then(()=>{
                     console.log(userData)
