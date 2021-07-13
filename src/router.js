@@ -22,7 +22,7 @@ export default new Router({
         },
         {
           path: '/addfood',
-          name: 'addfood',
+          name: 'add food',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
@@ -30,11 +30,27 @@ export default new Router({
         },
         {
           path: '/viewfood',
-          name: 'viewfood',
+          name: 'view food',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
           component: () => import(/* webpackChunkName: "demo" */ './views/ViewFood.vue')
+        },
+        {
+          path: '/viewfoodmanage',
+          name: 'viewfoodmanage',
+          // route level code-splitting
+          // this generates a separate chunk (about.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import(/* webpackChunkName: "demo" */ './views/ViewFoodManage.vue')
+        },
+        {
+          path: '/archievefood',
+          name: 'Archieve Food',
+          // route level code-splitting
+          // this generates a separate chunk (about.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import(/* webpackChunkName: "demo" */ './views/ArchieveFood.vue')
         },
         {
           path: '/icons',
