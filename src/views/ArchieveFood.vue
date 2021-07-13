@@ -39,7 +39,7 @@ A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
                         >
                           View Feedback
                         </base-button>
-                        <modal>
+                        <modal :show="modals.modal0">
                           <template v-slot:header>
                             <h5 class="modal-title" id="exampleModalLabel">
                               Modal title
