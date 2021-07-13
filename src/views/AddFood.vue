@@ -306,6 +306,14 @@ export default {
       foodObj['type']=this.type;
       foodObj['foodArray']=[this.fooditem1,this.fooditem2,this.fooditem3];
       db.doc('AllFood/'+this.type).set(foodObj)
+      db.collection('users').get().then(user=>{
+        user.forEach(doc=>{
+          let userref= db.doc('users/'+doc.id)
+          userref.update({
+            votings:[false,false,false]
+          })
+        })
+      })
 
     }
   }

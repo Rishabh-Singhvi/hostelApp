@@ -11,7 +11,7 @@
           </h3>
         </div>
         <div class="col text-right">
-          <base-button type="primary" size="sm">Stop Vote</base-button>
+          <base-button type="primary" size="sm" @click="stopVote()">Stop Vote</base-button>
           <base-button type="primary" size="sm">Start Feedback</base-button>
           <base-button type="primary" size="sm">Archieve</base-button>
         </div>
@@ -37,24 +37,23 @@
         <template class="row" slot-scope="{ row }">
           <th class="col-3" scope="row">
             <div class="media align-items-center">
-              
               <div class="media-body">
-                <span class="name mb-0 text-sm">{{ row.title }}</span>
+                <span class="name mb-0 text-sm"></span>
               </div>
             </div>
           </th>
           <td class="col-3 budget">
-            {{ row.budget }}
+            {{row.desc}}
           </td>
           <td class="col-3">
-            <badge class="badge-dot mr-4" :type="row.statusType">
+            <badge class="badge-dot mr-4" >
               
-              <span class="status">{{ row.status }}</span>
+              <span class="status">{{row.voting}}</span>
             </badge>
           </td>
           <td class="col-3">
             <div>
-              <base-button type="default">Fix The Menu</base-button>
+              <base-button type="default" @click="deleteother(row.voting)">Fix The Menu</base-button>
             </div>
           </td>
 
@@ -68,6 +67,8 @@
   </div>
 </template>
 <script>
+import firebase from '@/firebase_init.js';
+let db = firebase.firestore();
 export default {
   name: "projects-table",
   props: {
@@ -75,29 +76,63 @@ export default {
       type: String,
     },
     title: String,
+    tableData:Array
   },
   data() {
     return {
-      tableData: [
-        {
-          img: "img/theme/bootstrap.jpg",
-          title: "1.",
-          budget: "Breakfast Description",
-          status: "22",
-          statusType: "warning",
-          completion: 60,
-        },
-        {
-          img: "img/theme/bootstrap.jpg",
-          title: "2.",
-          budget: "Breakfast Description",
-          status: "12",
-          statusType: "warning",
-          completion: 60,
-        },
-      ],
+       ...this.tableData
+      // tableData: [
+        // {
+        //   img: "img/theme/bootstrap.jpg",
+        //   title: "1.",
+        //   budget: "Breakfast Description",
+        //   status: "22",
+        //   statusType: "warning",
+        //   completion: 60,
+        // },
+        // {
+        //   img: "img/theme/bootstrap.jpg",
+        //   title: "2.",
+        //   budget: "Breakfast Description",
+        //   status: "12",
+        //   statusType: "warning",
+        //   completion: 60,
+        // },
+      // ],
+     // tableData:...this.tableData
     };
   },
+  methods:{
+    deleteother(vote)
+    {
+      let newfoodArray=[]
+      console.log(this.tableData)
+      for(let i=0;i<this.tableData.length;i++)
+      {
+        if(this.tableData[i].voting==vote)
+        {
+          newfoodArray.push(this.tableData[i])
+        }
+      }
+      console.log(newfoodArray)
+      console.log(this.title)
+      let fodref=db.doc('AllFood/'+this.title)
+      fodref.update({
+        foodArray:newfoodArray,
+      })
+    },
+    stopVote()
+    {
+      db.collection('users').get().then(user=>{
+        user.forEach(doc=>{
+          let userref= db.doc('users/'+doc.id)
+          userref.update({
+            votings:[true,true,true]
+          })
+        })
+      })
+    }
+  }
 };
 </script>
 <style>

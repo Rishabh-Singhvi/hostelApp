@@ -62,7 +62,17 @@
         <div class="container-fluid mt--7">
             <div class="row">
                 <div class="col">
-                    <projects-table title="BREAKFAST"></projects-table>
+                    <projects-table :tableData="foodArrayB[0].foodArray" title="Breakfast"></projects-table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <projects-table :tableData="foodArrayL[0].foodArray" title="Lunch"></projects-table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <projects-table :tableData="foodArrayD[0].foodArray" title="Dinner"></projects-table>
                 </div>
             </div>
         </div>
@@ -70,12 +80,38 @@
     </div>
 </template>
 <script>
+import firebase from '@/firebase_init.js';
+let db = firebase.firestore();
   import ProjectsTable from './Tables/ProjectsTable'
   export default {
     name: 'tables',
     components: {
       ProjectsTable
-    }
+    },
+    data()
+  {
+      return{
+          foodArrayB:[],
+          foodArrayL:[],
+          foodArrayD:[],
+      };
+  },
+  beforeMount()
+  {
+    db.collection('AllFood').onSnapshot(food=>{
+      food.forEach(f=>{
+        console.log(f.data().type)
+        if(f.data().type=='Breakfast')
+        this.foodArrayB.push(f.data())
+        else if(f.data().type=='Lunch')
+        this.foodArrayL.push(f.data())
+        else if(f.data().type=='Dinner')
+        this.foodArrayD.push(f.data())
+        console.log(this.foodArrayD)
+      })
+    });
+  }
   };
+  
 </script>
 <style></style>
