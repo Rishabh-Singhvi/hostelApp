@@ -62,17 +62,17 @@
         <div class="container-fluid mt--7">
             <div class="row">
                 <div class="col">
-                    <projects-table :tableData="foodArrayB[0].foodArray" title="Breakfast"></projects-table>
+                    <projects-table :arch="foodArrayB" v-if="foodArrayB.length" :tableData="foodArrayB[0].foodArray" title="Breakfast"></projects-table>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <projects-table :tableData="foodArrayL[0].foodArray" title="Lunch"></projects-table>
+                    <projects-table :arch="foodArrayL" v-if="foodArrayL.length" :tableData="foodArrayL[0].foodArray" title="Lunch"></projects-table>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <projects-table :tableData="foodArrayD[0].foodArray" title="Dinner"></projects-table>
+                    <projects-table :arch="foodArrayD" v-if="foodArrayD.length" :tableData="foodArrayD[0].foodArray" title="Dinner"></projects-table>
                 </div>
             </div>
         </div>

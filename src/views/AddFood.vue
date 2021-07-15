@@ -24,7 +24,7 @@
               <base-dropdown>
                 <template v-slot:title>
                   <base-button type="primary" class="dropdown-toggle">
-                    MENU
+                    {{type}}
                   </base-button>
                 </template>
                 <span class="dropdown-item" @click="settype('a')">Breakfast</span>
@@ -274,7 +274,7 @@ export default {
   name: "user-profile",
   data() {
     return {
-      type:'',
+      type:'Menu',
       fooditem1: {
         desc:'',
         voting:0
@@ -305,6 +305,8 @@ export default {
       foodObj['totalVote']=0;
       foodObj['type']=this.type;
       foodObj['foodArray']=[this.fooditem1,this.fooditem2,this.fooditem3];
+      foodObj['feedback']=false;
+      foodObj['feedbackArray']=[]
       db.doc('AllFood/'+this.type).set(foodObj)
       db.collection('users').get().then(user=>{
         user.forEach(doc=>{

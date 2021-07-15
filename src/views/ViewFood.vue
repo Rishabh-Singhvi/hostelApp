@@ -57,6 +57,33 @@
                       <div>
                         <base-button type="default" v-if="voteu.votings[0]==false" @click="votethis(f,indx)">Vote</base-button>
                         <base-button type="default" v-else disabled @click="votethis(f,indx)">Already Voted</base-button>
+                        <base-button type="default" v-if="f.feedback" @click="modals.modal3=true">Add Feedback</base-button>
+                        <modal :show="modals.modal3">
+                          <template v-slot:header>
+                            <h5 class="modal-title" id="exampleModalLabel">
+                              Modal title
+                            </h5>
+                          </template>
+                          <div>
+                            <textarea
+                                rows="4"
+                                class="form-control form-control-alternative"
+                                placeholder="Menu Description..."
+                                v-model="feed"
+                              >
+                          </textarea>
+                          </div>
+                          <template v-slot:footer>
+                            <base-button
+                              type="secondary"
+                              @click="modals.modal3 = false"
+                              >Close</base-button
+                            >
+                            <base-button type="primary" @click="addfeedback(f)"
+                              >Save changes</base-button
+                            >
+                          </template>
+                        </modal>
                       </div>
                     </div>
                   </div>
@@ -92,6 +119,33 @@
                       <div>
                         <base-button type="default" v-if="voteu.votings[1]==false" @click="votethis(f,indx)">Vote</base-button>
                         <base-button type="default" v-else disabled @click="votethis(f,indx)">Already Voted</base-button>
+                        <base-button type="default" v-if="f.feedback" @click="modals.modal2=true">Add Feedback</base-button>
+                        <modal :show="modals.modal2">
+                          <template v-slot:header>
+                            <h5 class="modal-title" id="exampleModalLabel">
+                              Modal title
+                            </h5>
+                          </template>
+                          <div>
+                            <textarea
+                                rows="4"
+                                class="form-control form-control-alternative"
+                                placeholder="Menu Description..."
+                                v-model="feed"
+                              >
+                          </textarea>
+                          </div>
+                          <template v-slot:footer>
+                            <base-button
+                              type="secondary"
+                              @click="modals.modal2 = false"
+                              >Close</base-button
+                            >
+                            <base-button type="primary" @click="addfeedback(f)"
+                              >Save changes</base-button
+                            >
+                          </template>
+                        </modal>
                       </div>
                     </div>
                   </div>
@@ -127,6 +181,33 @@
                       <div>
                         <base-button type="default" v-if="voteu.votings[2]==false" @click="votethis(f,indx)">Vote</base-button>
                         <base-button type="default" v-else disabled @click="votethis(f,indx)">Already Voted</base-button>
+                        <base-button type="default" v-if="f.feedback" @click="modals.modal1=true" >Add Feedback</base-button>
+                        <modal :show="modals.modal1">
+                          <template v-slot:header>
+                            <h5 class="modal-title" id="exampleModalLabel">
+                              Modal title
+                            </h5>
+                          </template>
+                          <div>
+                            <textarea
+                                rows="4"
+                                class="form-control form-control-alternative"
+                                placeholder="Menu Description..."
+                                v-model="feed"
+                              >
+                          </textarea>
+                          </div>
+                          <template v-slot:footer>
+                            <base-button
+                              type="secondary"
+                              @click="modals.modal1 = false"
+                              >Close</base-button
+                            >
+                            <base-button type="primary" @click="addfeedback(f)"
+                              >Save changes</base-button
+                            >
+                          </template>
+                        </modal>
                       </div>
                     </div>
                   </div>
@@ -151,9 +232,21 @@ export default {
       foodArrayB:[],
       foodArrayL:[],
       foodArrayD:[],
-      voteu:{}
+      voteu:{},
+      modals:{
+        modal1:false,
+        modal2:false,
+        modal3:false
+      },
+      feed:'',
     };
   },
+  // watch:{
+  //   v:function()
+  //   {
+  //     this.voteu.votings[2]=true
+  //   }
+  // },
   methods:{
     votethis(e,e2)
     {
@@ -187,9 +280,10 @@ export default {
           console.log(u.data())
           let neu=u.data()
           neu.votings[1]=true
+          this.voteu.votings[1]=true
           console.log(neu)
            db.doc('users/'+uid).set(neu).then(()=>{
-             this.$router.go()
+             //this.$router.go()
            })
         })
         }
@@ -212,16 +306,31 @@ export default {
         // foodref.set({
         //   foodArray:this.foodArray
         // })
-        this.foodArrayB=[]
-    this.foodArrayL=[]
-    this.foodArrayD=[]
+        
       
     },
+    addfeedback(f)
+    {
+      let feedref=db.doc('AllFood/'+f.type);
+      feedref.update({
+        feedbackArray: firebase.firestore.FieldValue.arrayUnion(this.feed)
+      }).then(()=>{
+          this.modals.modal1=false
+          this.modals.modal2=false
+          this.modals.modal3=false
+      })
+    //   this.foodArrayB=[]
+    // this.foodArrayL=[]
+    // this.foodArrayD=[]
+    }
     
   },
   beforeMount()
   {
     db.collection('AllFood').onSnapshot(food=>{
+      if(this.foodArrayB.length!==0) this.foodArrayB=[]
+      if(this.foodArrayL.length!==0) this.foodArrayL=[]
+      if(this.foodArrayD.length!==0) this.foodArrayD=[]
       food.forEach(f=>{
         console.log(f.data().type)
         if(f.data().type=='Breakfast')

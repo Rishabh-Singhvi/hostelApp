@@ -12,8 +12,8 @@
         </div>
         <div class="col text-right">
           <base-button type="primary" size="sm" @click="stopVote()">Stop Vote</base-button>
-          <base-button type="primary" size="sm">Start Feedback</base-button>
-          <base-button type="primary" size="sm">Archieve</base-button>
+          <base-button type="primary" size="sm" @click="startFeedback()">Start Feedback</base-button>
+          <base-button type="primary" size="sm" @click="archieve()">Archieve</base-button>
         </div>
       </div>
     </div>
@@ -76,7 +76,8 @@ export default {
       type: String,
     },
     title: String,
-    tableData:Array
+    tableData:Array,
+    arch:Object
   },
   data() {
     return {
@@ -130,6 +131,21 @@ export default {
             votings:[true,true,true]
           })
         })
+      })
+    },
+    startFeedback()
+    {
+      let fodref=db.doc('AllFood/'+this.title)
+      fodref.update({
+        feedback:true,
+      })
+    },
+    archieve()
+    {
+      console.log(this.arch)
+      db.collection("Archieve").add(this.arch[0])
+      db.collection("AllFood").doc(this.title).delete().then(()=>{
+        this.$router.go()
       })
     }
   }
