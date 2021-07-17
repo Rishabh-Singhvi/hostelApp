@@ -146,8 +146,9 @@ const auth = firebase.auth();
                     console.log(userData)
                     localStorage.setItem('uid',user.user.uid)
                     localStorage.setItem('user',JSON.stringify(userData))
+                    localStorage.setItem('type','student')
                     this.creating=false
-                    //this.$router.push('BeatHunger')
+                    this.$router.push('Dashboard')
                 })
             })
             .catch(err=>{

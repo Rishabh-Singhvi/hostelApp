@@ -13,10 +13,10 @@
             path: '/dashboard'
           }"
         />
-        <sidebar-item :link="{name: 'Add Food', icon: 'ni ni-cart text-blue', path: '/addfood'}"/>
-        <sidebar-item :link="{name: 'View Food', icon: 'ni ni-cart text-blue', path: '/viewfood'}"/>
-        <sidebar-item :link="{name: 'View Food Manage', icon: 'ni ni-cart text-blue', path: '/viewfoodmanage'}"/>
-        <sidebar-item :link="{name: 'Archieve Food', icon: 'ni ni-cart text-blue', path: '/archievefood'}"/>
+        <sidebar-item v-if="type=='manager'" :link="{name: 'Add Food', icon: 'ni ni-cart text-blue', path: '/addfood'}"/>
+        <sidebar-item v-if="type=='student'" :link="{name: 'View Food', icon: 'ni ni-cart text-blue', path: '/viewfood'}"/>
+        <sidebar-item v-if="type=='manager'" :link="{name: 'View Food Manage', icon: 'ni ni-cart text-blue', path: '/viewfoodmanage'}"/>
+        <sidebar-item v-if="type=='manager'" :link="{name: 'Archieve Food', icon: 'ni ni-cart text-blue', path: '/archievefood'}"/>
         <sidebar-item :link="{name: 'Icons', icon: 'ni ni-planet text-blue', path: '/icons'}"/>
         <sidebar-item :link="{name: 'Maps', icon: 'ni ni-pin-3 text-orange', path: '/maps'}"/>
         <sidebar-item :link="{name: 'User Profile', icon: 'ni ni-single-02 text-yellow', path: '/profile'}"/>
@@ -52,7 +52,8 @@
     },
     data() {
       return {
-        sidebarBackground: 'vue' //vue|blue|orange|green|red|primary
+        sidebarBackground: 'vue', //vue|blue|orange|green|red|primary.
+        type:''
       };
     },
     methods: {
@@ -61,6 +62,10 @@
           this.$sidebar.displaySidebar(false);
         }
       }
+    },
+    created()
+    {
+      this.type=localStorage.getItem('type');
     }
   };
 </script>

@@ -18,9 +18,7 @@
                         </div> -->
                         <form role="form">
                             <div class="text-center">
-                             <div class="avatar avatar-lg rounded-circle">
-                                 <img alt="Image placeholder" src="img/theme/foodicon.png" style="max-height:75px;max-width:75px">
-                              </div>
+                             
                             </div>
                              <h3 style="text-align:center">LOGIN</h3>
                              <br>
@@ -142,12 +140,13 @@ const auth = firebase.auth();
                         else {
                             console.log(doc.data())
                             localStorage.setItem('uid',doc.id)
+                            localStorage.setItem('type',doc.data().type)
                             localStorage.setItem('user',JSON.stringify(doc.data()))
                         }
                 })
                 }).then(()=>{
                     this.Logingin=false
-                    //this.$router.push('BeatHunger')
+                    this.$router.push('Dashboard')
                 })
                 .catch(err=>{
                     this.Logingin=false
