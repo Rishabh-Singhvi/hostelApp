@@ -1,16 +1,16 @@
 <template>
     <div>
         <base-header class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-                     style="min-height: 860px; background-image: url(img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+                     style="min-height: 700px; background-image: url(img/theme/profile-cover.jpeg); background-size: cover; background-position: center top;">
             <!-- Mask -->
             <span class="mask bg-gradient-success opacity-8"></span>
             <!-- Header container -->
             <div class="container-fluid d-flex align-items-center">
                 <div class="row">
                     <div class="col-lg-7 col-md-10">
-                        <h1 class="display-2 text-white">Hello Jesse</h1>
-                        <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
-                        <router-link :to="{path:'/login'}"><a href="#!" class="btn btn-info mr-2" r>Login</a></router-link>
+                        <h1 class="display-2 text-white">NIE MENS HOSTEL MESS, Feels Like Home Food</h1>
+                        <!-- <p class="text-white mt-0 mb-5">NIE MENS HOSTEL MESS, Feels Like Home Food</p> -->
+                        <router-link :to="{path:'/login'}"><a href="#!" class="btn btn-info mr-2">Login</a></router-link>
                         <router-link :to="{path:'/register'}"><a href="#!" class="btn btn-info primary">Sign Up</a></router-link>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
-                                        <img src="img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                        <img src="img/theme/warden.png" class="rounded-circle">
                                     </a>
                                 </div>
                             </div>
@@ -58,19 +58,19 @@
                             </div>
                             <div class="text-center">
                                 <h3>
-                                    Jessica Jones<span class="font-weight-light">, 27</span>
+                                    Dr. Y M Manjunath<span class="font-weight-light"></span>
                                 </h3>
                                 <div class="h5 font-weight-300">
-                                    <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                                    <i class="ni location_pin mr-2"></i>Warden
                                 </div>
                                 <div class="h5 mt-4">
-                                    <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                                    <i class="ni business_briefcase-24 mr-2"></i>Hostel Address - NIE MENS HOSTEL, Mysore, 570008
                                 </div>
-                                <div>
+                                <!-- <div>
                                     <i class="ni education_hat mr-2"></i>University of Computer Science
                                 </div>
                                 <hr class="my-4" />
-                                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
+                                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p> -->
                                 <!-- <a href="#">Show more</a> -->
                             </div>
                         </div>

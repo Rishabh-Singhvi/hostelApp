@@ -4,8 +4,8 @@
         <base-nav class="navbar-top navbar-horizontal navbar-dark"
                   containerClasses="px-4 container"
                   expand>
-            <router-link slot="brand" class="navbar-brand" to="/">
-                <img src="img/brand/white.png"/>
+            <router-link slot="brand" class="navbar-brand" to="/register">
+                <img src="img/brand/green.png"/>
             </router-link>
 
             <template v-slot="{closeMenu}">
@@ -13,9 +13,9 @@
                 <div class="navbar-collapse-header d-md-none">
                     <div class="row">
                         <div class="col-6 collapse-brand">
-                            <router-link to="/">
+                            <!-- <router-link to="/">
                                 <img src="img/brand/green.png">
-                            </router-link>
+                            </router-link> -->
                         </div>
                         <div class="col-6 collapse-close">
                             <button type="button"
@@ -30,12 +30,12 @@
                 </div>
                 <!-- Navbar items -->
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <router-link class="nav-link nav-link-icon" to="/">
                             <i class="ni ni-planet"></i>
                             <span class="nav-link-inner--text">Dashboard</span>
                         </router-link>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <router-link class="nav-link nav-link-icon" to="/register">
                             <i class="ni ni-circle-08"></i>
@@ -48,12 +48,12 @@
                             <span class="nav-link-inner--text">Login</span>
                         </router-link>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <router-link class="nav-link nav-link-icon" to="/profile">
                             <i class="ni ni-single-02"></i>
                             <span class="nav-link-inner--text">Profile</span>
                         </router-link>
-                    </li>
+                    </li> -->
                 </ul>
             </template>
         </base-nav>
@@ -63,9 +63,9 @@
                 <div class="header-body text-center mb-7">
                     <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-6">
-                            <h1 class="text-white">Welcome!</h1>
-                            <p class="text-lead text-white">Use these awesome forms to login or create new account in
-                                your project for free.</p>
+                            <!-- <h1 class="text-white">Welcome!</h1> -->
+                            <!-- <p class="text-lead text-white">Use these awesome forms to login or create new account in
+                                your project for free.</p> -->
                         </div>
                     </div>
                 </div>
@@ -88,12 +88,12 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-6">
                         <div class="copyright text-center text-xl-left text-muted">
-                            &copy; {{year}} <a href="https://www.creative-tim.com" class="font-weight-bold ml-1"
-                                               target="_blank">Creative Tim</a>
+                            &copy; {{year}} <a  class="font-weight-bold ml-1"
+                                               target="_blank">Created by Rishabh Singhvi & Sahil Gohri</a>
                         </div>
                     </div>
                     <div class="col-xl-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                        <!-- <ul class="nav nav-footer justify-content-center justify-content-xl-end">
                             <li class="nav-item">
                                 <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
                             </li>
@@ -108,7 +108,7 @@
                                 <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md"
                                    class="nav-link" target="_blank">MIT License</a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
             </div>

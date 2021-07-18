@@ -1,36 +1,70 @@
 <template>
   <div>
-    <base-header
-      class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-      style="
-        min-height: 600px;
-        background-image: url(img/theme/profile-cover.jpg);
-        background-size: cover;
-        background-position: center top;
-      "
-    >
-      <!-- Mask -->
-      <span class="mask bg-gradient-success opacity-8"></span>
-      <!-- Header container -->
-      <div class="container-fluid d-flex align-items-center">
-        <div class="row">
-          <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello Jesse</h1>
-            <p class="text-white mt-0 mb-5">
-              This is your profile page. You can see the progress you've made
-              with your work and manage your projects or assigned tasks
-            </p>
-          </div>
-        </div>
-      </div>
-    </base-header>
+    <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
+            <!-- Card stats -->
+            <!-- <div class="row">
+                <div class="col-xl-3 col-lg-6">
+                    <stats-card title="Total traffic"
+                                type="gradient-red"
+                                sub-title="350,897"
+                                icon="ni ni-active-40"
+                                class="mb-4 mb-xl-0">
+
+                        <template slot="footer">
+                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                            <span class="text-nowrap">Since last month</span>
+                        </template>
+                    </stats-card>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <stats-card title="Total traffic"
+                                type="gradient-orange"
+                                sub-title="2,356"
+                                icon="ni ni-chart-pie-35"
+                                class="mb-4 mb-xl-0">
+
+                        <template slot="footer">
+                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 12.18%</span>
+                            <span class="text-nowrap">Since last month</span>
+                        </template>
+                    </stats-card>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <stats-card title="Sales"
+                                type="gradient-green"
+                                sub-title="924"
+                                icon="ni ni-money-coins"
+                                class="mb-4 mb-xl-0">
+
+                        <template slot="footer">
+                            <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i> 5.72%</span>
+                            <span class="text-nowrap">Since last month</span>
+                        </template>
+                    </stats-card>
+
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <stats-card title="Performance"
+                                type="gradient-info"
+                                sub-title="49,65%"
+                                icon="ni ni-chart-bar-32"
+                                class="mb-4 mb-xl-0">
+
+                        <template slot="footer">
+                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 54.8%</span>
+                            <span class="text-nowrap">Since last month</span>
+                        </template>
+                    </stats-card>
+                </div>
+            </div> -->
+        </base-header>
 
     <div class="container-fluid mt--6">
       <div class="row">
         
 
         <div class="col-xl-12 order-xl-1">
-          <card shadow type="secondary" v-for="(f,i) in foodArrayB" :key="i">
+          <card shadow type="secondary" class="mb-2" v-for="(f,i) in foodArrayB" :key="i">
             <div slot="header" class="bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
@@ -43,7 +77,7 @@
                 <div>
                   <div class="row">
                     <div class="col-md-4" v-for="(item,indx) in f.foodArray" :key="indx">
-                      <base-input alternative="" label="Food Item 1">
+                      <base-input alternative="" label="Food Item">
                         <textarea
                           rows="8"
                           class="form-control form-control-alternative"
@@ -61,7 +95,7 @@
                         <modal :show="modals.modal3">
                           <template v-slot:header>
                             <h5 class="modal-title" id="exampleModalLabel">
-                              Modal title
+                              Add Feedback
                             </h5>
                           </template>
                           <div>
@@ -92,7 +126,7 @@
               </form>
             </template>
           </card>
-          <card shadow type="secondary" v-for="(f,i) in foodArrayL" :key="i">
+          <card shadow type="secondary" class="mb-2" v-for="(f,i) in foodArrayL" :key="i">
             <div slot="header" class="bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
@@ -105,7 +139,7 @@
                 <div>
                   <div class="row">
                     <div class="col-md-4" v-for="(item,indx) in f.foodArray" :key="indx">
-                      <base-input alternative="" label="Food Item 1">
+                      <base-input alternative="" label="Food Item">
                         <textarea
                           rows="8"
                           class="form-control form-control-alternative"
@@ -123,7 +157,7 @@
                         <modal :show="modals.modal2">
                           <template v-slot:header>
                             <h5 class="modal-title" id="exampleModalLabel">
-                              Modal title
+                              Add Feedback
                             </h5>
                           </template>
                           <div>
@@ -154,7 +188,7 @@
               </form>
             </template>
           </card>
-          <card shadow type="secondary" v-for="(f,i) in foodArrayD" :key="i">
+          <card shadow type="secondary" class="mb-2" v-for="(f,i) in foodArrayD" :key="i">
             <div slot="header" class="bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
@@ -167,7 +201,7 @@
                 <div>
                   <div class="row">
                     <div class="col-md-4" v-for="(item,indx) in f.foodArray" :key="indx">
-                      <base-input alternative="" label="Food Item 1">
+                      <base-input alternative="" label="Food Item">
                         <textarea
                           rows="8"
                           class="form-control form-control-alternative"
@@ -185,7 +219,7 @@
                         <modal :show="modals.modal1">
                           <template v-slot:header>
                             <h5 class="modal-title" id="exampleModalLabel">
-                              Modal title
+                              Add Feedback
                             </h5>
                           </template>
                           <div>
@@ -323,6 +357,11 @@ export default {
           this.modals.modal2=false
           this.modals.modal3=false
       })
+      this.$notify({
+          type: 'success',
+          title: 'Feedback Added!'
+        })
+
     //   this.foodArrayB=[]
     // this.foodArrayL=[]
     // this.foodArrayD=[]

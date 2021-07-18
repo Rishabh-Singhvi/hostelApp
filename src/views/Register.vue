@@ -14,7 +14,7 @@
                         </a>
                     </div>
                 </div> -->
-                <div class="card-body px-lg-5 py-lg-5">
+                <div class="card-body px-lg-6 py-lg-6">
                     <!-- <div class="text-center text-muted mb-4">
                         <small>Or sign up with credentials</small>
                     </div> -->
@@ -48,7 +48,7 @@
                                 </base-checkbox>
                             </div>
                         </div>
-                         <div class="col-md-7">
+                         <div class="col-md-8">
                         <base-button v-if="creating" type="primary" class=" mb-10">
                             Creating...
                         </base-button>
@@ -66,16 +66,16 @@
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-6">
+                <!-- <div class="col-6">
                     <a href="#" class="text-light">
                         <small>Forgot password?</small>
                     </a>
-                </div>
-                <div class="col-6 text-right">
+                </div> -->
+                <!-- <div class="col-6 text-right">
                     <router-link to="/login" class="text-light">
                         <small>Login into your account</small>
                     </router-link>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
