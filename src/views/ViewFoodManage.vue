@@ -65,11 +65,13 @@
                     <projects-table :arch="foodArrayB" v-if="foodArrayB.length" :tableData="foodArrayB[0].foodArray" title="Breakfast"></projects-table>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col">
                     <projects-table :arch="foodArrayL" v-if="foodArrayL.length" :tableData="foodArrayL[0].foodArray" title="Lunch"></projects-table>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col">
                     <projects-table :arch="foodArrayD" v-if="foodArrayD.length" :tableData="foodArrayD[0].foodArray" title="Dinner"></projects-table>

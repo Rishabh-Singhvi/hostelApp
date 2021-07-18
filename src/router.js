@@ -74,22 +74,22 @@ export default new Router({
         // }
       ]
     },
-    // {
-    //   path: '/',
-    //   redirect: 'login',
-    //   component: AuthLayout,
-    //   children: [
-    //     {
-    //       path: '/login',
-    //       name: 'login',
-    //       component: () => import(/* webpackChunkName: "demo" */ './views/Login.vue')
-    //     },
-    //     {
-    //       path: '/register',
-    //       name: 'register',
-    //       component: () => import(/* webpackChunkName: "demo" */ './views/Register.vue')
-    //     }
-    //   ]
-    // }
+    {
+      path: '/',
+      redirect: 'login',
+      component: AuthLayout,
+      children: [
+        {
+          path: '/login',
+          name: 'login',
+          component: () => import(/* webpackChunkName: "demo" */ './views/Login.vue')
+        },
+        {
+          path: '/register',
+          name: 'register',
+          component: () => import(/* webpackChunkName: "demo" */ './views/Register.vue')
+        }
+      ]
+    }
   ]
 })

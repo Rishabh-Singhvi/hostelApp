@@ -27,7 +27,6 @@
         :data="tableData"
       >
         <template slot="columns">
-          <th>Serial No.</th>
           <th>Breakfast Description</th>
           <th>Votes</th>
           <th></th>
@@ -35,13 +34,7 @@
         </template>
 
         <template class="row" slot-scope="{ row }">
-          <th class="col-3" scope="row">
-            <div class="media align-items-center">
-              <div class="media-body">
-                <span class="name mb-0 text-sm"></span>
-              </div>
-            </div>
-          </th>
+      
           <td class="col-3 budget">
             {{row.desc}}
           </td>
