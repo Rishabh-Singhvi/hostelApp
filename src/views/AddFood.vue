@@ -315,6 +315,11 @@ export default {
             votings:[false,false,false]
           })
         })
+        this.$notify({
+          type: 'success',
+          title: 'Food Added!'
+        })
+        
       })
 
     }

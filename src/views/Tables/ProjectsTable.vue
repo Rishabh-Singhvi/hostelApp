@@ -132,6 +132,10 @@ export default {
           })
         })
       })
+      this.$notify({
+          type: 'warning',
+          title: 'Voting Stopped!'
+        })
     },
     startFeedback()
     {
@@ -139,6 +143,10 @@ export default {
       fodref.update({
         feedback:true,
       })
+      this.$notify({
+          type: 'success',
+          title: 'Feedback Started!'
+        })
     },
     archieve()
     {
@@ -147,6 +155,10 @@ export default {
       db.collection("AllFood").doc(this.title).delete().then(()=>{
         this.$router.go()
       })
+      this.$notify({
+          type: 'success',
+          title: 'Archieved!'
+        })
     }
   }
 };

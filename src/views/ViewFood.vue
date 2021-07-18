@@ -300,6 +300,10 @@ export default {
         })
         }
         })
+        this.$notify({
+          type: 'success',
+          title: 'Voting Successful!'
+        })
         
         
         
