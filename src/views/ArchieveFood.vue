@@ -3,9 +3,9 @@
     <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
     </base-header>
 
-    <div class="container-fluid mt--6">
+    <div class="container-fluid mt--6 mr-2">
       <div class="row">
-          <card class="col-md-4" shadow type="secondary" v-for="(arch,i) in allarch" :key="i">
+          <card class="col-md-5 ml-6 mr-4 mt-3" shadow type="secondary" v-for="(arch,i) in allarch" :key="i">
             <div slot="header" class="bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
@@ -16,10 +16,10 @@
                 </div> -->
               </div>
             </div>
-            <template>
+            <template >
               <form @submit.prevent>
                 
-                    <div>
+                    <div >
                       <base-input alternative="" label="Food Item">
                         <div id="app">
                           Date: {{ new Date().toLocaleString() }}
@@ -55,9 +55,7 @@
                               @click="modals.modal0 = false"
                               >Close</base-button
                             >
-                            <base-button type="primary"
-                              >Save changes</base-button
-                            >
+                      
                           </template>
                         </modal>
                       </div>
